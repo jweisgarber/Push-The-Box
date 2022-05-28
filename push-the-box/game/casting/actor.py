@@ -2,6 +2,20 @@ import constants, pyray
 from game.shared.point import Point
 
 class Actor():
+    """A visible, moveable thing that participates in the game. 
+    
+    The responsibility of Actor is to keep track of its appearance, position and velocity in 2d 
+    space.
+
+    Attributes:
+        _position (Point): The screen coordinates.
+        _velocity (Point): The speed and direction.
+        _width (int): The width of the shape.
+        _height (int): The height of the shape.
+        _color (Color): The color of the text.
+        _type (str): The type of shape.
+    """
+
     def __init__(self):
         """Constructs an instance of Actor"""
         self._position = Point(0,0)
@@ -54,8 +68,11 @@ class Actor():
         self._type = type
 
     def move_next(self):
-        x = (self._position.get_x() + self._velocity.get_x()) % constants.SCREEN_WIDTH
-        y = (self._position.get_y() + self._velocity.get_y()) % constants.SCREEN_HEIGHT
+        """Move the actor to the next position"""
+        x = (self._position.get_x() + self._velocity.get_x())
+        y = (self._position.get_y() + self._velocity.get_y())
+
+        self._position = Point(x, y)
 
     def get_position(self):
         """Get the position of Actor

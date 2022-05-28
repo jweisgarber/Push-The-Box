@@ -49,6 +49,9 @@ class VideoService():
             if type == "rect":
                 pyray.draw_rectangle(x, y, width, height, color)
             elif type == "circle":
+                x += constants.CIRCLE_OFFSET
+                y += constants.CIRCLE_OFFSET
+
                 pyray.draw_circle(x, y, width/2, color)
 
     def draw_shapes(self, shapes):
